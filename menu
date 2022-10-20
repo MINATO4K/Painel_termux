@@ -1,0 +1,220 @@
+#!/bin/bash
+op0="\e[1;32m[\033[1;33m0\033[1;32m]"
+op1="\033[1;32m[\033[1;33m1\033[1;32m]"
+op2="\033[1;32m[\033[1;33m2\033[1;32m]"
+op3="\033[1;32m[\033[1;33m3\033[1;32m]"
+op4="\033[1;32m[\033[1;33m4\033[1;32m]"
+op5="\e[1;32m[\033[1;33m5\033[1;32m]"
+op6="\e[1;32m[\033[1;33m6\033[1;32m]"
+op7="\e[1;32m[\033[1;33m7\033[1;32m]"
+op8="\e[1;32m[\033[1;33m8\033[1;32m]"
+op9="\e[1;32m[\033[1;33m7\033[1;32m]"
+
+cor1="\033[1;31m"
+cor2="\033[1;32m"
+cor3="\033[1;33m"
+cor4="\033[1;34m"
+cor5="\033[1;35m"
+cor6="\033[1;36m"
+cor7="\033[1;37m"
+
+it="\033[1;32;3m"
+fch="\033[m"
+clear
+echo -e "\033[1;31m╓══════════════════════════════════════╗
+║\033[1;34;47m               ℙ𝕃𝕌𝕊 𝕊𝕐𝕊𝕋𝔼𝕄            \033[m\033[1;31m║
+╠══════════════════════════════════════╣"
+ls
+echo -e "$cor1╠══════════════════════════════════════╣"
+echo -e "║ $op1$it Criar Arquirvos $fch$cor1                 ║"
+echo -e "║ $op2$it Copiar Arquirvos$fch$cor1                 ║"
+echo -e "║ $op3$it Criar Pastas    $fch$cor1                 ║"
+echo -e "║ $op4$it Mover           $fch$cor1                 ║"
+echo -e "║ $op5$it Chmod           $fch$cor1                 ║"
+echo -e "║ $op6$it Apagar items    $fch$cor1                 ║"
+echo -e "║ $op7$it Executar Python $fch$cor1                 ║"
+echo -e "╚══════════════════════════════════════╝"
+
+read menu
+
+if [ $menu == 1 ] 
+then
+	cor1="\033[1;31m"
+	cor2="\033[1;32m"
+	cor3="\033[1;33m"
+	cor4="\033[1;34m"
+	cor5="\033[1;35m"
+	cor6="\033[1;36m"
+	cor7="\033[1;71m"
+
+	fch="\033[m"
+	echo -e "$cor1
+================$fch
+$cor7 Nome do arquivo:"
+	read nome
+	echo -e "$cor1
+===============
+$cor5     TIPOS$cor1
+==============
+$op1$it TXT$fch$cor1
+$op2$it PY$fch$cor1
+$op3$it PHP$fch$cor1
+$op4$it SH$fch$cor1
+$op5$it HTML$fch$cor1
+$op6$it JS$fch$cor1
+$op7$it CSS$fch$cor1
+=============="
+read tipo 
+       if [ $tipo == 1 ]
+       then
+	       touch $nome.txt
+       elif [ $tipo == 2 ]
+       then
+	       touch $nome.py
+       elif [ $tipo == 3 ]
+       then
+	       touch $nome.php
+       elif [ $tipo == 4 ]
+       then
+	       touch $nome.sh
+       elif [ $tipo == 5 ]
+       then
+	       touch $nome.html
+       elif [ $tipo == 6 ]
+       then
+	       touch $nome.js
+       elif [ $tipo == 7 ]
+       then
+	       touch $nome.css
+       fi
+elif [ $menu == 2 ]
+then
+	clear
+	echo -e "$cor1
+================
+$cor7 Nome do Arquivo $cor1
+================
+$cor2 EX:$cor3 teste.txt
+: 
+	" 
+	read arquivo
+	echo -e "$cor1
+======================
+$cor6   DESTINOS PADROES 
+      PARA COPIAS $cor1
+======================
+$op1$it HOME DO TERMUX$fch$cor1
+$op2$it HOME DO CELULAR$fch$cor1
+$op3$it DOWNLOADS$fch$cor1
+$op4$it TELEGRAM$fch$cor1
+$op5$it CUSTOM$fch$cor1
+======================
+	"
+	read destino
+	if [ $destino == 1 ]
+	then
+		cp $arquivo /data/data/com.termux/files/home
+	elif [ $destino == 2 ]
+	then
+		cp $arquivo /data/data/com.termux/files/home/storage/emulated/0
+	elif [ $destino == 3 ]
+	then
+		cp $arquivo /data/data/com.termux/files/home/storage/emulated/0/Downloads
+	elif [ $destino == 4 ]
+	then
+		cp $arquivo /data/data/com.termux/files/home/storage/emulated/0/Telegram
+	elif [ $destino == 5 ]
+	then
+		echo -e "$cor1
+==============
+$cor7 DESTINO NOVO 
+$cor1=============="
+		read novo_destino
+		cp $arquivo $novo_destino 
+	fi
+elif [ $menu == 3 ]
+then
+	clear
+	echo -e "$cor1
+=================
+$cor7  NOME DA PASTA $cor1
+================="
+read nome
+mkdir $nome
+elif [ $menu == 4 ]
+then
+	clear
+	echo -e "$cor1
+=================
+$cor7 NOME DO ARQUIVO 
+$cor4       OU $cor7
+  NOME DA PASTA $cor1
+================="
+read item
+echo -e "$cor1
+===========
+$cor7 DESTINO $cor1
+==========="
+read destino
+mv $item $destino 
+elif [ $menu == 5 ]
+then
+	R="$cor2[$cor3 R $cor2]$cor6"
+	W="$cor2[$cor3 W $cor2]$cor6"
+	X="$cor2[$cor3 X $cor2]$cor6"
+	RWX="$cor2[$cor3 RWX $cor2]$cor6"
+	echo -e "$cor1
+=====================
+$cor7   NOME DO ARQUIVO $cor1
+ ==================
+$cor7   PARA LIBERAR A $cor1
+  ================
+$cor7     PERMISSÃO $cor1
+====================="
+	read nome
+
+	echo -e "$cor1
+========================
+$cor7 PERMISSÕES DE EXECUÇÃO$cor1
+========================
+$R$it LEITURA$fch$cor1
+$W$it ESCRITA$fch$cor1
+$X$it EXECUÇÃO$fch$cor1
+$RWX$it TODAS$fch$cor1
+	"
+	read mod
+
+	if [ $mod == "R" ]
+	then
+		chmod +r $nome
+	elif [ $mod == "W" ]
+	then
+		chmod +w $nome
+	elif [ $mod == "X" ]
+	then
+		chmod +x $nome
+	elif [ $mod == "RWX"]
+	then
+		chmod +rwx $nome
+	fi
+elif [ $menu == 6 ]
+then
+	echo -e "$cor1
+=====================
+$cor7   NOME DO ARQUIVO
+     PARA DELETAR$cor1
+=====================
+$cor1 EX:$cor3 TESTE.txt
+	"
+	read arquivo
+	rm $arquivo
+elif [ $menu == 7 ]
+then
+	echo -e "$cor1
+========================
+$cor7 NOME DO ARQUIVO PYTHON $cor1
+========================
+	"
+	read py
+	python $py.py
+fi
