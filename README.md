@@ -1,0 +1,2 @@
+# Painel_termux
+Configuração 
